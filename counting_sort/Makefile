@@ -2,16 +2,13 @@ CC=cc
 UNITY_INCLUDE=../Unity/src
 UNITY_SRC=../Unity/src/unity.c
 
-all: counting_sort counting_sort_func counting_sort_key
+all: counting_sort counting_sort_key
 
 counting_sort:
-	$(CC) -o $@ $@.c
-
-counting_sort_func:
-	$(CC) -o $@ $@.c
+	$(CC) -I$(UNITY_INCLUDE) -o test_$@ $@.c test_$@.c $(UNITY_SRC)
 
 counting_sort_key:
-	$(CC) -o $@ $@.c
+	$(CC) -I$(UNITY_INCLUDE) -o test_$@ $@.c test_$@.c $(UNITY_SRC)
 
 clean:
-	rm -f counting_sort counting_sort_func counting_sort_key
+	rm -f test_counting_sort test_counting_sort_key

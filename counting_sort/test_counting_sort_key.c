@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include "unity.h"
-#include "radix_sort_key.h"
+#include "counting_sort_key.h"
 
 /*******************************************************************************
  * Setup and Teardown :
@@ -20,27 +20,26 @@ void tearDown(void) {
 /*******************************************************************************
  * Test Suit :
  ******************************************************************************/
-void test_radix_sort_key(void) {
-  size_t  input_length  =  8;
-  Data    input_data[]  = { { .key  = 170,
-                              .data = "string1" },
-                            { .key  = 45,
-                              .data = "string2" },
-                            { .key  = 75,
-                              .data = "string3" },
-                            { .key  = 90,
-                              .data = "string4" },
-                            { .key  = 802,
-                              .data = "string5" },
-                            { .key  = 24,
-                              .data = "string6" },
-                            { .key  = 2,
-                              .data = "string7" },
-                            { .key  = 66,
-                              .data = "string8" } };
-  RadixItem* formated_input = format_input_data(input_length, input_data);
+void test_counting_sort_key(void) {
+  uint16_t  input_length  = 8;
+  Data      input_data[]  = { { .key  = 170,
+                                .data = "string1" },
+                              { .key  = 45,
+                                .data = "string2" },
+                              { .key  = 75,
+                                .data = "string3" },
+                              { .key  = 90,
+                                .data = "string4" },
+                              { .key  = 802,
+                                .data = "string5" },
+                              { .key  = 24,
+                                .data = "string6" },
+                              { .key  = 2,
+                                .data = "string7" },
+                              { .key  = 66,
+                                .data = "string8" } };
 
-  Data* output  = radix_sort(input_length, input_data);
+  Data* output  = counting_sort_key(input_length, input_data);
 
   TEST_ASSERT_EQUAL_UINT16(        2, output[0].key);
   TEST_ASSERT_EQUAL_STRING("string7", output[0].data);
@@ -79,7 +78,7 @@ void test_radix_sort_key(void) {
 int main(void) {
   UNITY_BEGIN();
 
-  RUN_TEST(test_radix_sort_key);
+  RUN_TEST(test_counting_sort_key);
 
   return UNITY_END();
 }
