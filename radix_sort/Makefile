@@ -1,6 +1,6 @@
 CC=cc
-UNITY_INCLUDE=./Unity/src
-UNITY_SRC=./Unity/src/unity.c
+UNITY_INCLUDE=../Unity/src
+UNITY_SRC=../Unity/src/unity.c
 
 all: radix_sort radix_sort_key
 
