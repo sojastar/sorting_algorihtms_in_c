@@ -41,7 +41,7 @@ void count_sort_by_hex_digit(size_t input_length,RadixItem* input,uint16_t digit
   // 1. Counting input keys :
   /* We are sorting hex digits on a uint16_t key, so the input_count count ...
    * ... array has to be of length 16. */
-  uint16_t input_count[16] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+  uint16_t input_count[16] = { 0 };
   for (size_t i = 0; i < input_length; ++i)
     input_count[input[i].digits[digit]] += 1;
 
