@@ -35,6 +35,8 @@ void count_sort_by_hex_digit(size_t input_length,uint16_t* input,uint16_t digit)
   // 4. Copying the results to to original array :
   for (size_t i = 0; i < input_length; ++i)
     input[i] = output[i];
+
+  free(output);
 }
 
 void radix_sort(size_t input_length,uint16_t* input) {
