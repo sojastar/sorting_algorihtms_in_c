@@ -28,67 +28,37 @@ void test_hex_digit(void) {
   TEST_ASSERT_EQUAL_UINT8( 3, hex_digit(n, 2));
 }
 
-void test_format_input_data(void) {
-  uint16_t input_length = 3;
-  uint16_t input_data[] = { 29, 4, 385 };
-
-  RadixItem* formated_input  = format_input_data(input_length, input_data);
-
-  TEST_ASSERT_EQUAL_UINT16( 29, formated_input[0].n);
-  TEST_ASSERT_EQUAL_UINT8(  13, formated_input[0].digits[0]);
-  TEST_ASSERT_EQUAL_UINT8(   1, formated_input[0].digits[1]);
-  TEST_ASSERT_EQUAL_UINT8(   0, formated_input[0].digits[2]);
-
-  TEST_ASSERT_EQUAL_UINT16(  4, formated_input[1].n);
-  TEST_ASSERT_EQUAL_UINT8(   4, formated_input[1].digits[0]);
-  TEST_ASSERT_EQUAL_UINT8(   0, formated_input[1].digits[1]);
-
-  TEST_ASSERT_EQUAL_UINT16(385, formated_input[2].n);
-  TEST_ASSERT_EQUAL_UINT8(   1, formated_input[2].digits[0]);
-  TEST_ASSERT_EQUAL_UINT8(   8, formated_input[2].digits[1]);
-  TEST_ASSERT_EQUAL_UINT8(   1, formated_input[2].digits[2]);
-  TEST_ASSERT_EQUAL_UINT8(   0, formated_input[2].digits[3]);
-
-  free(formated_input);
-}
-
 void test_count_sort_by_hex_digit(void) {
   uint16_t input_length     = 3;
   uint16_t input_data[]     = { 29, 4, 385 };
-  RadixItem* formated_input = format_input_data(input_length, input_data);
 
-  count_sort_by_hex_digit(input_length, formated_input, 0);
+  count_sort_by_hex_digit(input_length, input_data, 0);
 
-  TEST_ASSERT_EQUAL_UINT16(385, formated_input[0].n);
-  TEST_ASSERT_EQUAL_UINT16(  4, formated_input[1].n);
-  TEST_ASSERT_EQUAL_UINT16( 29, formated_input[2].n);
+  TEST_ASSERT_EQUAL_UINT16(385, input_data[0]);
+  TEST_ASSERT_EQUAL_UINT16(  4, input_data[1]);
+  TEST_ASSERT_EQUAL_UINT16( 29, input_data[2]);
 
-  count_sort_by_hex_digit(input_length, formated_input, 1);
+  count_sort_by_hex_digit(input_length, input_data, 1);
 
-  TEST_ASSERT_EQUAL_UINT16(  4, formated_input[0].n);
-  TEST_ASSERT_EQUAL_UINT16( 29, formated_input[1].n);
-  TEST_ASSERT_EQUAL_UINT16(385, formated_input[2].n);
-
-  free(formated_input);
+  TEST_ASSERT_EQUAL_UINT16(  4, input_data[0]);
+  TEST_ASSERT_EQUAL_UINT16( 29, input_data[1]);
+  TEST_ASSERT_EQUAL_UINT16(385, input_data[2]);
 }
 
 void test_radix_sort(void) {
   uint16_t input_length     = 8;
   uint16_t input_data[]     = { 170, 45, 75, 90, 802, 24, 2, 66 };
-  RadixItem* formated_input = format_input_data(input_length, input_data);
 
-  uint16_t* output  = radix_sort(input_length, input_data);
+  radix_sort(input_length, input_data);
 
-  TEST_ASSERT_EQUAL_UINT16(  2, output[0]);
-  TEST_ASSERT_EQUAL_UINT16( 24, output[1]);
-  TEST_ASSERT_EQUAL_UINT16( 45, output[2]);
-  TEST_ASSERT_EQUAL_UINT16( 66, output[3]);
-  TEST_ASSERT_EQUAL_UINT16( 75, output[4]);
-  TEST_ASSERT_EQUAL_UINT16( 90, output[5]);
-  TEST_ASSERT_EQUAL_UINT16(170, output[6]);
-  TEST_ASSERT_EQUAL_UINT16(802, output[7]);
-
-  free(output);
+  TEST_ASSERT_EQUAL_UINT16(  2, input_data[0]);
+  TEST_ASSERT_EQUAL_UINT16( 24, input_data[1]);
+  TEST_ASSERT_EQUAL_UINT16( 45, input_data[2]);
+  TEST_ASSERT_EQUAL_UINT16( 66, input_data[3]);
+  TEST_ASSERT_EQUAL_UINT16( 75, input_data[4]);
+  TEST_ASSERT_EQUAL_UINT16( 90, input_data[5]);
+  TEST_ASSERT_EQUAL_UINT16(170, input_data[6]);
+  TEST_ASSERT_EQUAL_UINT16(802, input_data[7]);
 }
 
 
@@ -102,7 +72,6 @@ int main(void) {
   UNITY_BEGIN();
 
   RUN_TEST(test_hex_digit);
-  RUN_TEST(test_format_input_data);
   RUN_TEST(test_count_sort_by_hex_digit);
   RUN_TEST(test_radix_sort);
 
