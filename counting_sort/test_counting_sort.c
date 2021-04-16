@@ -24,18 +24,16 @@ void test_counting_sort(void) {
   uint16_t input_length     = 8;
   uint16_t input_data[]     = { 170, 45, 75, 90, 802, 24, 2, 66 };
 
-  uint16_t* output  = counting_sort(input_length, input_data);
+  counting_sort(input_length, input_data);
 
-  TEST_ASSERT_EQUAL_UINT16(  2, output[0]);
-  TEST_ASSERT_EQUAL_UINT16( 24, output[1]);
-  TEST_ASSERT_EQUAL_UINT16( 45, output[2]);
-  TEST_ASSERT_EQUAL_UINT16( 66, output[3]);
-  TEST_ASSERT_EQUAL_UINT16( 75, output[4]);
-  TEST_ASSERT_EQUAL_UINT16( 90, output[5]);
-  TEST_ASSERT_EQUAL_UINT16(170, output[6]);
-  TEST_ASSERT_EQUAL_UINT16(802, output[7]);
-
-  free(output);
+  TEST_ASSERT_EQUAL_UINT16(  2, input_data[0]);
+  TEST_ASSERT_EQUAL_UINT16( 24, input_data[1]);
+  TEST_ASSERT_EQUAL_UINT16( 45, input_data[2]);
+  TEST_ASSERT_EQUAL_UINT16( 66, input_data[3]);
+  TEST_ASSERT_EQUAL_UINT16( 75, input_data[4]);
+  TEST_ASSERT_EQUAL_UINT16( 90, input_data[5]);
+  TEST_ASSERT_EQUAL_UINT16(170, input_data[6]);
+  TEST_ASSERT_EQUAL_UINT16(802, input_data[7]);
 }
 
 

@@ -7,7 +7,7 @@
 
 
 /* ---=== Function Declaration : ===--- */
-void counting_sort_key(size_t input_length,Data** input,Data** output) {
+void counting_sort_key(size_t input_length,Data** input) {
   // 1. Finding the working range :
   uint16_t key_range = 0;
   for (size_t i = 0; i < input_length; ++i)
@@ -25,11 +25,16 @@ void counting_sort_key(size_t input_length,Data** input,Data** output) {
     input_count[i] += input_count[i-1];
 
   // 4. Actually sorting :
+  Data** output = (Data**)malloc(input_length * sizeof(Data*));
   for (ssize_t i = input_length - 1; i >= 0; --i) {
     uint16_t key = input[i]->key;
     input_count[key] -= 1;
     output[input_count[key]] = input[i];
   }
 
+  for (size_t i = 0; i < input_length; ++i)
+    input[i] = output[i];
+
+  free(output);
   free(input_count);
 }

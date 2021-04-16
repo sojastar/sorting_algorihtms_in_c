@@ -39,34 +39,31 @@ void test_counting_sort_key(void) {
                             &input7,
                             &input8 };
 
-  Data**  output  = (Data**)calloc(input_length, sizeof(Data*));
-  counting_sort_key(input_length, input_data, output);
+  counting_sort_key(input_length, input_data);
 
-  TEST_ASSERT_EQUAL_UINT16(        2, output[0]->key);
-  TEST_ASSERT_EQUAL_STRING("string7", output[0]->data);
+  TEST_ASSERT_EQUAL_UINT16(        2, input_data[0]->key);
+  TEST_ASSERT_EQUAL_STRING("string7", input_data[0]->data);
 
-  TEST_ASSERT_EQUAL_UINT16(       24, output[1]->key);
-  TEST_ASSERT_EQUAL_STRING("string6", output[1]->data);
+  TEST_ASSERT_EQUAL_UINT16(       24, input_data[1]->key);
+  TEST_ASSERT_EQUAL_STRING("string6", input_data[1]->data);
 
-  TEST_ASSERT_EQUAL_UINT16(       45, output[2]->key);
-  TEST_ASSERT_EQUAL_STRING("string2", output[2]->data);
+  TEST_ASSERT_EQUAL_UINT16(       45, input_data[2]->key);
+  TEST_ASSERT_EQUAL_STRING("string2", input_data[2]->data);
 
-  TEST_ASSERT_EQUAL_UINT16(       66, output[3]->key);
-  TEST_ASSERT_EQUAL_STRING("string8", output[3]->data);
+  TEST_ASSERT_EQUAL_UINT16(       66, input_data[3]->key);
+  TEST_ASSERT_EQUAL_STRING("string8", input_data[3]->data);
 
-  TEST_ASSERT_EQUAL_UINT16(       75, output[4]->key);
-  TEST_ASSERT_EQUAL_STRING("string3", output[4]->data);
+  TEST_ASSERT_EQUAL_UINT16(       75, input_data[4]->key);
+  TEST_ASSERT_EQUAL_STRING("string3", input_data[4]->data);
 
-  TEST_ASSERT_EQUAL_UINT16(       90, output[5]->key);
-  TEST_ASSERT_EQUAL_STRING("string4", output[5]->data);
+  TEST_ASSERT_EQUAL_UINT16(       90, input_data[5]->key);
+  TEST_ASSERT_EQUAL_STRING("string4", input_data[5]->data);
 
-  TEST_ASSERT_EQUAL_UINT16(      170, output[6]->key);
-  TEST_ASSERT_EQUAL_STRING("string1", output[6]->data);
+  TEST_ASSERT_EQUAL_UINT16(      170, input_data[6]->key);
+  TEST_ASSERT_EQUAL_STRING("string1", input_data[6]->data);
 
-  TEST_ASSERT_EQUAL_UINT16(      802, output[7]->key);
-  TEST_ASSERT_EQUAL_STRING("string5", output[7]->data);
-
-  free(output);
+  TEST_ASSERT_EQUAL_UINT16(      802, input_data[7]->key);
+  TEST_ASSERT_EQUAL_STRING("string5", input_data[7]->data);
 }
 
 
