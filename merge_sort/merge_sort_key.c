@@ -1,27 +1,27 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "merge_sort.h"
+#include "merge_sort_key.h"
 
 /* ---=== Function Declarations : ===--- */
-void merge_sort(uint16_t* input,size_t left, size_t right) {
+void merge_sort_key(Data** input,size_t left, size_t right) {
   if (right - left > 0) {
     size_t middle = left + ( right - left ) / 2;
-    merge_sort(input, left, middle);
-    merge_sort(input,       middle + 1, right);
+    merge_sort_key(input, left, middle);
+    merge_sort_key(input,       middle + 1, right);
 
     merge(input, left, middle, right);
   }
 }
 
-void merge(uint16_t* input,size_t left,size_t middle,size_t right) {
+void merge(Data** input,size_t left,size_t middle,size_t right) {
   size_t left_index   = left;
   size_t right_index  = middle + 1;
   size_t buffer_index = 0;
 
-  uint16_t* buffer = (uint16_t*)malloc((right - left + 1) * sizeof(uint16_t));
+  Data** buffer = (Data**)malloc((right - left + 1) * sizeof(Data*));
 
   while ((left_index <= middle) && (right_index <= right)) {
-    if (input[left_index] <= input[right_index]) {
+    if (input[left_index]->key <= input[right_index]->key) {
       buffer[buffer_index] = input[left_index];
       left_index   += 1;
     }

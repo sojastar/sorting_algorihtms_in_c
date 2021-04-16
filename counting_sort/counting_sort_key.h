@@ -1,5 +1,3 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "data_struct.h"
 
 /* ---=== Function Prototype : ===--- */
